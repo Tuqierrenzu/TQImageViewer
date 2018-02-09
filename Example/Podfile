@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'TQImageViewer_Example' do
+  pod 'SDWebImage', '~> 4.2.2'
+  
+  pod 'TQImageViewer', :path => '../'
+  target 'TQImageViewer_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

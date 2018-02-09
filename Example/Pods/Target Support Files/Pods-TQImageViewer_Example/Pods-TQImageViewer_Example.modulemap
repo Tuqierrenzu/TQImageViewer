@@ -1,0 +1,6 @@
+framework module Pods_TQImageViewer_Example {
+  umbrella header "Pods-TQImageViewer_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

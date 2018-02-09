@@ -1,0 +1,6 @@
+framework module TQImageViewer {
+  umbrella header "TQImageViewer-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "TQImageViewer",
+  "version": "0.1.0",
+  "summary": "A short description of TQImageViewer.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/snail-z/TQImageViewer",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "snail-z": "hao01.zhang@inin88.com"
+  },
+  "source": {
+    "git": "https://github.com/snail-z/TQImageViewer.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "TQImageViewer/Classes/**/*"
+}
