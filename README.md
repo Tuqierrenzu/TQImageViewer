@@ -1,13 +1,20 @@
 # TQImageViewer
 
-[![CI Status](http://img.shields.io/travis/snail-z/TQImageViewer.svg?style=flat)](https://travis-ci.org/snail-z/TQImageViewer)
-[![Version](https://img.shields.io/cocoapods/v/TQImageViewer.svg?style=flat)](http://cocoapods.org/pods/TQImageViewer)
-[![License](https://img.shields.io/cocoapods/l/TQImageViewer.svg?style=flat)](http://cocoapods.org/pods/TQImageViewer)
-[![Platform](https://img.shields.io/cocoapods/p/TQImageViewer.svg?style=flat)](http://cocoapods.org/pods/TQImageViewer)
+[![Language](https://img.shields.io/badge/Language-%20Objective--C%20-orange.svg)](https://travis-ci.org/TQTeam/TQImageViewer)
+[![Version](https://img.shields.io/badge/pod-v0.1.0-brightgreen.svg)](http://cocoapods.org/pods/TQImageViewer)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://cocoapods.org/pods/TQImageViewer)
+[![Platform](https://img.shields.io/badge/platform-%20iOS8.0+%20-lightgrey.svg)](http://cocoapods.org/pods/TQImageViewer)
+
+TQImageViewer is a simple picture browser component.
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Requirements
+
+- Requires iOS 8.0 or later
+- Requires Automatic Reference Counting (ARC)
 
 ## Installation
 
@@ -20,7 +27,7 @@ pod 'TQImageViewer'
 
 ## Author
 
-snail-z, hao01.zhang@inin88.com
+TQTeam, haozhang0770@163.com, ZhengJiaoHong6@gmail.com
 
 ## License
 

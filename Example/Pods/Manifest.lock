@@ -2,7 +2,8 @@ PODS:
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
-  - TQImageViewer (0.1.0)
+  - TQImageViewer (0.1.0):
+    - SDWebImage (~> 4.2.2)
 
 DEPENDENCIES:
   - SDWebImage (~> 4.2.2)
@@ -14,7 +15,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
-  TQImageViewer: 1769cb2f77b82b7419f905531ce865cef18e9bf4
+  TQImageViewer: 1b4f31e471a1823d197c0df2a0d7c8ccfb7f26c7
 
 PODFILE CHECKSUM: 7a08ac823ef3f2c0b2a291ef32ab083312f90714
 

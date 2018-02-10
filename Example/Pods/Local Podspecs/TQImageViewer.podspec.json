@@ -18,5 +18,10 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "TQImageViewer/Classes/**/*"
+  "source_files": "TQImageViewer/Classes/**/*",
+  "dependencies": {
+    "SDWebImage": [
+      "~> 4.2.2"
+    ]
+  }
 }

@@ -7,8 +7,8 @@
 //
 
 #import "TQImageViewer.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <SDWebImage/UIView+WebCache.h>
+#import "SDWebImage/UIView+WebCache.h"
+#import "SDWebImage/UIImageView+WebCache.h"
 
 #ifndef dispatch_main_async_safe
 #define dispatch_main_async_safe(block) \
@@ -286,6 +286,7 @@ dispatch_async(dispatch_get_main_queue(), block); \
 @property (nonatomic, assign, readonly) NSTimeInterval animateDuration;
 @property (nonatomic, assign, readonly) BOOL isPresenting;
 @property (nonatomic, assign, readonly) BOOL fromStatusBarHidden;
+@property (nonatomic, assign, readonly) BOOL fromInteractivePopGestureRecognizerEnabled;
 @property (nonatomic, strong, readonly) NSArray<TQImageViewerAttribute *> *photos;
 @property (nonatomic, strong, readonly) NSMutableArray<TQImageViewerCell *> *reusableCells;
 @end
@@ -371,12 +372,20 @@ dispatch_async(dispatch_get_main_queue(), block); \
 #pragma mark - Present
 
 - (void)presentInView:(UIView *)view currentIndex:(NSInteger)currentIndex completion:(void (^)(void))completion {
+    if (_isPresenting) return;
     _fromStatusBarHidden = [UIApplication sharedApplication].isStatusBarHidden;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     // If you use application object to manage the status bar, You need to be in `Info.plist` file `View controller-based status bar appearance` corresponding value set to NO, otherwise the application object set is invalid.
     [UIApplication.sharedApplication setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 #pragma clang diagnostic pop
+    
+    // disable interactivePopGestureRecognizer
+    UIGestureRecognizer *interactivePopGestureRecognizer = [self popGestureRecognizerFromView:view];
+    if (interactivePopGestureRecognizer) {
+        _fromInteractivePopGestureRecognizerEnabled = interactivePopGestureRecognizer.isEnabled;
+        interactivePopGestureRecognizer.enabled = NO;
+    }
     
     if (!view) {
         view = [UIApplication sharedApplication].keyWindow ?: [[UIApplication sharedApplication].delegate window];
@@ -461,10 +470,17 @@ dispatch_async(dispatch_get_main_queue(), block); \
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion {
+    if (!_isPresenting) return;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [UIApplication.sharedApplication setStatusBarHidden:_fromStatusBarHidden withAnimation:UIStatusBarAnimationNone];
 #pragma clang diagnostic pop
+    
+    // enabled interactivePopGestureRecognizer
+    UIGestureRecognizer *interactivePopGestureRecognizer = [self popGestureRecognizerFromView:self.superview];
+    if (interactivePopGestureRecognizer) {
+        interactivePopGestureRecognizer.enabled = _fromInteractivePopGestureRecognizerEnabled;
+    }
     
     if (!animated) _animateDuration = 0;
     NSInteger currentPage = [self currentPage];
@@ -516,6 +532,24 @@ dispatch_async(dispatch_get_main_queue(), block); \
             if (completion) completion();
         }];
     }
+}
+
+#pragma mark - Check interactivePopGestureRecognizer
+
+- (UIGestureRecognizer *)popGestureRecognizerFromView:(UIView *)fromView {
+    for (UIView *view = fromView; view; view = view.superview) {
+        UIResponder *nextResponder = [view nextResponder];
+        if ([nextResponder isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *fromNavigationController = (UINavigationController *)nextResponder;
+            return fromNavigationController.interactivePopGestureRecognizer;
+        } else if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            UIViewController *fromViewController = (UIViewController *)nextResponder;
+            if (fromViewController.navigationController) {
+                return fromViewController.navigationController.interactivePopGestureRecognizer;
+            }
+        }
+    }
+    return nil;
 }
 
 #pragma mark - CancelImageLoad

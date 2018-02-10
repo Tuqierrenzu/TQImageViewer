@@ -25,7 +25,6 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		C5FD7A988A2BD65756493D7B /* Pods_TQImageViewer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8657A7CDA08BEA1E9C6B040 /* Pods_TQImageViewer_Tests.framework */; };
 		F2073F96202D31D000839A56 /* TQEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2073F95202D31D000839A56 /* TQEntryViewController.m */; };
-		F254C5FB202D7AED0020A2E6 /* TQImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = F254C5F9202D7AED0020A2E6 /* TQImageViewer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +70,6 @@
 		E6C7708CC29C3254690FBA6B /* Pods-TQImageViewer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TQImageViewer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TQImageViewer_Example/Pods-TQImageViewer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F2073F94202D31D000839A56 /* TQEntryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TQEntryViewController.h; sourceTree = "<group>"; };
 		F2073F95202D31D000839A56 /* TQEntryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TQEntryViewController.m; sourceTree = "<group>"; };
-		F254C5F9202D7AED0020A2E6 /* TQImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TQImageViewer.m; path = ../../TQImageViewer/Classes/TQImageViewer.m; sourceTree = "<group>"; };
-		F254C5FA202D7AED0020A2E6 /* TQImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TQImageViewer.h; path = ../../TQImageViewer/Classes/TQImageViewer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +135,6 @@
 		6003F593195388D20070C39A /* Example for TQImageViewer */ = {
 			isa = PBXGroup;
 			children = (
-				F254C5FA202D7AED0020A2E6 /* TQImageViewer.h */,
-				F254C5F9202D7AED0020A2E6 /* TQImageViewer.m */,
 				6003F59C195388D20070C39A /* TQAppDelegate.h */,
 				6003F59D195388D20070C39A /* TQAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -399,10 +394,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TQImageViewer_Example/Pods-TQImageViewer_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TQImageViewer/TQImageViewer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TQImageViewer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -416,7 +413,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F254C5FB202D7AED0020A2E6 /* TQImageViewer.m in Sources */,
 				6003F59E195388D20070C39A /* TQAppDelegate.m in Sources */,
 				F2073F96202D31D000839A56 /* TQEntryViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* TQPreViewController.m in Sources */,

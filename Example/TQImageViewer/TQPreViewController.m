@@ -2,13 +2,13 @@
 //  TQViewController.m
 //  TQImageViewer
 //
-//  Created by snail-z on 02/09/2018.
-//  Copyright (c) 2018 snail-z. All rights reserved.
+//  Created by TQTeam on 02/09/2018.
+//  Copyright (c) 2018 TQTeam. All rights reserved.
 //
 
 #import "TQPreViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "TQImageViewer.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface TQPreViewCell : UICollectionViewCell
 
@@ -36,17 +36,7 @@
 - (void)setImageUrlString:(NSString *)imageUrlString {
     if (!imageUrlString) return;
     _imageUrlString = imageUrlString;
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlString] placeholderImage:[UIImage imageNamed:@"tq_placeholderImage"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        if (!image) return ;
-//        CGFloat scale = (image.size.height / image.size.width) / (_imageView.bounds.size.height / _imageView.bounds.size.width);
-//        if (scale < 0.99 || isnan(scale)) {
-//            _imageView.contentMode = UIViewContentModeScaleAspectFill;
-//            _imageView.layer.contentsRect = CGRectMake(0, 0, 1, 1);
-//        } else {
-//            _imageView.contentMode = UIViewContentModeScaleAspectFill;
-//            _imageView.layer.contentsRect = CGRectMake(0, 0, 1, (float)image.size.width / image.size.height);
-//        }
-    }];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlString] placeholderImage:[UIImage imageNamed:@"tq_placeholderImage"] completed:NULL];
 }
 
 @end
@@ -69,7 +59,7 @@
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.minimumLineSpacing = 10;
     layout.minimumInteritemSpacing = 10;
-    layout.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
+    layout.sectionInset = UIEdgeInsetsMake(10, 5, 20, 5);
    
     NSUInteger maxCount = 4;
     CGFloat spareTotal = layout.sectionInset.left + layout.sectionInset.right + layout.minimumInteritemSpacing * (maxCount - 1);

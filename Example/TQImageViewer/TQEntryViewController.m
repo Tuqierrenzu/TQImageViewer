@@ -2,12 +2,13 @@
 //  ExampleViewController.m
 //  TQImageViewer_Example
 //
-//  Created by zhanghao on 2018/2/9.
-//  Copyright © 2018年 snail-z. All rights reserved.
+//  Created by TQTeam on 2018/2/9.
+//  Copyright © 2018年 TQTeam. All rights reserved.
 //
 
 #import "TQEntryViewController.h"
 #import "TQPreViewController.h"
+#import <SDWebImage/SDImageCache.h>
 
 @interface TQEntryViewController ()
 
@@ -31,8 +32,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
@@ -46,7 +45,8 @@
 }
 
 - (IBAction)clearCaches:(UIBarButtonItem *)sender {
-    NSLog(@"clearCaches");
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:NULL];
 }
 
 @end
